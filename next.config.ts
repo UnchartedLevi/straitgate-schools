@@ -10,6 +10,19 @@ const nextConfig: NextConfig = {
         source: "/config.yml",
         destination: "/admin/config.yml",
       },
+      {
+        // Proxy Netlify Identity requests to the actual Netlify site
+        // Decap CMS git-gateway fetches /.netlify/identity/* on the current domain
+        source: "/.netlify/identity/:path*",
+        destination:
+          "https://ephemeral-crepe-e6f2b7.netlify.app/.netlify/identity/:path*",
+      },
+      {
+        // Proxy Netlify Git Gateway requests to the actual Netlify site
+        source: "/.netlify/git/:path*",
+        destination:
+          "https://ephemeral-crepe-e6f2b7.netlify.app/.netlify/git/:path*",
+      },
     ];
   },
 };
