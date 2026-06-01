@@ -11,7 +11,7 @@ import {
   ChevronDownIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { navbarSchools } from '@/lib/navigation';
+import { School } from '@/lib/content';
 
 type MenuSection = 'About Us' | 'Schools' | 'Admissions';
 
@@ -27,7 +27,11 @@ const menuLinks: MenuLink[] = [
   { label: 'Contact Us', href: '/contact' },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  schools: School[];
+}
+
+export default function Navbar({ schools }: NavbarProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
@@ -249,9 +253,11 @@ export default function Navbar() {
                     <motion.div key="schools" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                       <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Our Schools</p>
                       <ul className="mt-4 divide-y divide-white/10">
-                        {navbarSchools.map((school) => (
-                          <li key={school.name} className="py-3 text-lg font-semibold leading-7 text-white/80">
-                            {school.name}
+                        {schools.map((school) => (
+                          <li key={school.id}>
+                            <Link href={`/schools/${school.initial}`} onClick={closeMenu} className="block py-3 text-lg font-semibold leading-7 text-white/80 transition-colors hover:text-primary">
+                              {school.name}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -262,10 +268,10 @@ export default function Navbar() {
                     <motion.div key="admissions" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                       <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Apply To A School</p>
                       <ul className="mt-4 divide-y divide-white/10">
-                        {navbarSchools.map((school) => (
-                          <li key={school.name}>
+                        {schools.filter((school) => school.admission_url).map((school) => (
+                          <li key={school.id}>
                             <a
-                              href={school.admissionUrl}
+                              href={school.admission_url}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="group flex items-center justify-between gap-4 py-3 text-lg font-semibold leading-7 text-white/80 transition-colors hover:text-primary"

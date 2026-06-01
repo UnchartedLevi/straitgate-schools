@@ -35,7 +35,7 @@ export default function HeroSection({ general }: HeroSectionProps) {
     <section className="group relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       {heroImages.length > 0 ? (
-        <AnimatePresence mode="sync">
+        <AnimatePresence>
           <motion.div
             key={heroImages[currentIndex % heroImages.length]}
             initial={{ opacity: 0 }}

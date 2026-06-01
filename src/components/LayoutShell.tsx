@@ -2,19 +2,20 @@
 
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { General } from '@/lib/content';
+import { General, School } from '@/lib/content';
 
 interface LayoutShellProps {
   children: React.ReactNode;
   general: General;
+  schools: School[];
 }
 
-export default function LayoutShell({ children, general }: LayoutShellProps) {
+export default function LayoutShell({ children, general, schools }: LayoutShellProps) {
   return (
     <>
-      <Navbar />
+      <Navbar schools={schools} />
       <main className="flex-1">{children}</main>
-      <Footer general={general} />
+      <Footer general={general} schools={schools} />
     </>
   );
 }

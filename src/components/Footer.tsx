@@ -1,22 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { General } from '@/lib/content';
-import { navbarSchools } from '@/lib/navigation';
+import { General, School } from '@/lib/content';
 import CopyPhoneButton from './CopyPhoneButton';
 
 interface FooterProps {
   general: General;
+  schools: School[];
 }
 
 const socialIconClass = 'h-5 w-5';
 const socialLinkClass = 'text-white/45 transition-colors hover:text-primary';
 const footerLinkClass = 'text-sm leading-6 text-white/55 transition-colors hover:text-white';
 
-export default function Footer({ general }: FooterProps) {
+export default function Footer({ general, schools }: FooterProps) {
   const phone = general.phone;
   const whatsapp = general.whatsapp_phone;
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(general.address)}`;
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(general.email)}`;
 
   return (
     <footer className="bg-[#080808] text-white">
@@ -35,8 +34,10 @@ export default function Footer({ general }: FooterProps) {
           <div>
             <h3 className="mb-5 text-sm font-extrabold uppercase tracking-[0.14em] text-white">Our Schools</h3>
             <ul className="space-y-2">
-              {navbarSchools.map((school) => (
-                <li key={school.name} className="text-sm leading-6 text-white/55">{school.name}</li>
+              {schools.map((school) => (
+                <li key={school.id}>
+                  <Link href={`/schools/${school.initial}`} className={footerLinkClass}>{school.name}</Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -55,7 +56,7 @@ export default function Footer({ general }: FooterProps) {
             <address className="space-y-2 text-sm not-italic leading-6 text-white/55">
               <p><a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">{general.address}</a></p>
               <p><CopyPhoneButton phone={phone} className="text-left transition-colors hover:text-white" /></p>
-              <p><a href={gmailUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">{general.email}</a></p>
+              <p><a href={`mailto:${general.email}`} className="transition-colors hover:text-white">{general.email}</a></p>
             </address>
           </div>
         </div>

@@ -14,6 +14,7 @@ export default function CopyPhoneButton({ phone, className }: CopyPhoneButtonPro
     try {
       await navigator.clipboard.writeText(phone);
     } catch {
+      // Fallback for older browsers and insecure contexts without clipboard access.
       const textArea = document.createElement('textarea');
       textArea.value = phone;
       textArea.style.position = 'fixed';
@@ -28,7 +29,7 @@ export default function CopyPhoneButton({ phone, className }: CopyPhoneButtonPro
   };
 
   return (
-    <button type="button" onClick={copyPhone} className={className}>
+    <button type="button" onClick={copyPhone} className={`cursor-pointer ${className ?? ''}`}>
       {phone}
       <span className="ml-2 text-xs text-white/40" aria-live="polite">{copied ? 'Copied' : 'Copy'}</span>
     </button>
