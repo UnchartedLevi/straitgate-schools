@@ -26,6 +26,11 @@
     "Excellence in Christ-Centered Education",
     "Building Tomorrow's Leaders Today"
   ],
+  "hero_images": [
+    "/hero-campus.webp",
+    "/hero-students.webp",
+    "/hero-classroom.webp"
+  ],
   "hero_media_url": "",
   "hero_media_type": ""
 }
