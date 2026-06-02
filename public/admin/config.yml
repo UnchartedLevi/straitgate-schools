@@ -43,6 +43,12 @@ collections:
             widget: "list"
             max: 3
             field: { name: "image", label: "Image", widget: "image" }
+          - name: "admission_links"
+            label: "Admissions Menu Links"
+            widget: "list"
+            fields:
+              - { name: "name", label: "School Name", widget: "string" }
+              - { name: "url", label: "Admission Portal URL", widget: "string" }
           - { name: "hero_media_url", label: "Hero Background Image/Video URL", widget: "image", required: false }
           - { name: "hero_media_type", label: "Hero Media Type (e.g. image/jpeg, video/mp4)", widget: "string", required: false }
 

@@ -11,7 +11,7 @@ import {
   ChevronDownIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { School } from '@/lib/content';
+import { AdmissionLink, School } from '@/lib/content';
 
 type MenuSection = 'About Us' | 'Schools' | 'Admissions';
 
@@ -29,9 +29,10 @@ const menuLinks: MenuLink[] = [
 
 interface NavbarProps {
   schools: School[];
+  admissionLinks: AdmissionLink[];
 }
 
-export default function Navbar({ schools }: NavbarProps) {
+export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
@@ -92,14 +93,63 @@ export default function Navbar({ schools }: NavbarProps) {
     setOpenSection(openSection === section ? null : section);
   };
 
+  const renderSectionContent = (section: MenuSection, compact = false) => (
+    <>
+      {section === 'About Us' && (
+        <>
+          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">About Us</p>
+          <Link href="/about/history" onClick={closeMenu} className={`${compact ? 'mt-3 text-lg' : 'mt-6 text-2xl'} block font-semibold transition-colors hover:text-primary`}>
+            Our History
+          </Link>
+        </>
+      )}
+
+      {section === 'Schools' && (
+        <>
+          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Our Schools</p>
+          <ul className={`${compact ? 'mt-2' : 'mt-4'} divide-y divide-white/10`}>
+            {schools.map((school) => (
+              <li key={school.id}>
+                <Link href={`/schools/${school.initial}`} onClick={closeMenu} className={`${compact ? 'py-2.5 text-base' : 'py-3 text-lg'} block font-semibold leading-7 text-white/80 transition-colors hover:text-primary`}>
+                  {school.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {section === 'Admissions' && (
+        <>
+          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Apply To A School</p>
+          <ul className={`${compact ? 'mt-2' : 'mt-4'} divide-y divide-white/10`}>
+            {admissionLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${compact ? 'py-2.5 text-base' : 'py-3 text-lg'} group flex items-center justify-between gap-4 font-semibold leading-7 text-white/80 transition-colors hover:text-primary`}
+                >
+                  {link.name}
+                  <ArrowRightIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </>
+  );
+
   return (
     <>
       <motion.header
         initial={false}
         animate={{ y: navVisible ? 0 : '-100%' }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        className={`fixed inset-x-0 top-0 z-50 border-b text-white transition-colors duration-300 ${
-          scrolled ? 'border-white/10 bg-[#080808]/95 shadow-lg backdrop-blur-md' : 'border-white/15 bg-black/20'
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+          scrolled ? 'border-black/10 bg-white text-black shadow-lg' : 'border-white/15 bg-transparent text-white'
         }`}
       >
         <div className="flex h-20 w-full items-stretch justify-between pl-2 sm:h-24 sm:pl-4 lg:pl-5">
@@ -118,7 +168,7 @@ export default function Navbar({ schools }: NavbarProps) {
               priority
               unoptimized
             />
-            <span className="hidden text-lg font-bold tracking-[0.12em] sm:block lg:text-3xl">
+            <span className="hidden font-serif text-lg tracking-[0.1em] sm:block lg:text-3xl">
               STRAITGATE SCHOOLS
             </span>
           </Link>
@@ -127,7 +177,7 @@ export default function Navbar({ schools }: NavbarProps) {
             <button
               type="button"
               onClick={() => openMenu('Admissions')}
-              className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
+              className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
             >
               Apply
               <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -137,7 +187,7 @@ export default function Navbar({ schools }: NavbarProps) {
               onClick={() => openMenu()}
               aria-expanded={menuOpen}
               aria-controls="main-menu"
-              className="flex items-center gap-2 bg-[#172554] px-4 text-xs font-extrabold uppercase tracking-[0.12em] transition-colors hover:bg-[#1e3a6d] sm:gap-4 sm:px-7 sm:text-sm"
+              className="flex items-center gap-2 bg-[#172554] px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#1e3a6d] sm:gap-4 sm:px-7 sm:text-sm"
             >
               <Bars3Icon className="h-6 w-6" />
               Menu
@@ -153,10 +203,10 @@ export default function Navbar({ schools }: NavbarProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Main menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22 }}
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ duration: 0.45, ease: 'easeInOut' }}
             className="no-scrollbar fixed inset-0 z-[60] overflow-y-auto bg-[#080808] text-white"
           >
             <div className="border-b border-white/10">
@@ -172,10 +222,10 @@ export default function Navbar({ schools }: NavbarProps) {
                     alt="Straitgate Schools logos"
                     width={913}
                     height={273}
-                    className="h-11 w-auto object-contain sm:h-14"
+                    className="h-11 w-auto object-contain sm:h-20"
                     unoptimized
                   />
-                  <span className="hidden text-lg font-extrabold tracking-[0.12em] sm:block lg:text-xl">
+                  <span className="hidden font-serif text-lg tracking-[0.1em] sm:block lg:text-3xl">
                     STRAITGATE SCHOOLS
                   </span>
                 </Link>
@@ -202,28 +252,44 @@ export default function Navbar({ schools }: NavbarProps) {
                         <Link
                           href={item.href}
                           onClick={item.href === '/' ? handleHomeClick : closeMenu}
-                          className="group flex items-center justify-between py-3 font-serif text-4xl leading-tight transition-colors hover:text-primary sm:py-4 sm:text-5xl lg:text-6xl"
+                          className="group flex items-center justify-between py-3 font-serif text-3xl leading-tight transition-colors hover:text-primary sm:py-4 sm:text-5xl lg:text-6xl"
                         >
                           {item.label}
                           <ArrowRightIcon className="h-6 w-6 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
                         </Link>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={() => toggleSection(item.section as MenuSection)}
-                          aria-expanded={openSection === item.section}
-                          className="flex w-full items-center justify-between py-3 text-left font-serif text-4xl leading-tight transition-colors hover:text-primary sm:py-4 sm:text-5xl lg:text-6xl"
-                        >
-                          {item.label}
-                          <ChevronDownIcon className={`h-6 w-6 transition-transform ${openSection === item.section ? 'rotate-180' : ''}`} />
-                        </button>
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => toggleSection(item.section as MenuSection)}
+                            aria-expanded={openSection === item.section}
+                            className="flex w-full items-center justify-between py-3 text-left font-serif text-3xl leading-tight transition-colors hover:text-primary sm:py-4 sm:text-5xl lg:text-6xl"
+                          >
+                            {item.label}
+                            <ChevronDownIcon className={`h-6 w-6 transition-transform ${openSection === item.section ? 'rotate-180' : ''}`} />
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {openSection === item.section && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                className="overflow-hidden lg:hidden"
+                              >
+                                <div className="pb-4">
+                                  {renderSectionContent(item.section as MenuSection, true)}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </>
                       )}
                     </li>
                   ))}
                 </ul>
               </nav>
 
-              <div className="lg:border-l lg:border-white/10 lg:pl-12">
+              <div className="hidden lg:block lg:border-l lg:border-white/10 lg:pl-12">
                 <AnimatePresence mode="wait">
                   {!openSection && (
                     <motion.div
@@ -242,46 +308,19 @@ export default function Navbar({ schools }: NavbarProps) {
 
                   {openSection === 'About Us' && (
                     <motion.div key="about" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                      <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">About Us</p>
-                      <Link href="/about/history" onClick={closeMenu} className="mt-6 block text-2xl font-semibold transition-colors hover:text-primary">
-                        Our History
-                      </Link>
+                      {renderSectionContent('About Us')}
                     </motion.div>
                   )}
 
                   {openSection === 'Schools' && (
                     <motion.div key="schools" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                      <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Our Schools</p>
-                      <ul className="mt-4 divide-y divide-white/10">
-                        {schools.map((school) => (
-                          <li key={school.id}>
-                            <Link href={`/schools/${school.initial}`} onClick={closeMenu} className="block py-3 text-lg font-semibold leading-7 text-white/80 transition-colors hover:text-primary">
-                              {school.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                      {renderSectionContent('Schools')}
                     </motion.div>
                   )}
 
                   {openSection === 'Admissions' && (
                     <motion.div key="admissions" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                      <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Apply To A School</p>
-                      <ul className="mt-4 divide-y divide-white/10">
-                        {schools.filter((school) => school.admission_url).map((school) => (
-                          <li key={school.id}>
-                            <a
-                              href={school.admission_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group flex items-center justify-between gap-4 py-3 text-lg font-semibold leading-7 text-white/80 transition-colors hover:text-primary"
-                            >
-                              {school.name}
-                              <ArrowRightIcon className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                      {renderSectionContent('Admissions')}
                     </motion.div>
                   )}
                 </AnimatePresence>

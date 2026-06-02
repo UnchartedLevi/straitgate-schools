@@ -31,6 +31,28 @@
     "/hero-students.webp",
     "/hero-classroom.webp"
   ],
+  "admission_links": [
+    {
+      "name": "Straitgate Primary School Magodo",
+      "url": "https://straitgatemagodo.educare.school/admission-form"
+    },
+    {
+      "name": "Straitgate High School",
+      "url": "https://sghs.educare.school/admission-form"
+    },
+    {
+      "name": "Straitgate College",
+      "url": "https://sgc.educare.school/admission-form"
+    },
+    {
+      "name": "Straitgate Nursery and Primary School Forthright",
+      "url": "https://sgf.educare.school/admission-form"
+    },
+    {
+      "name": "Straitgate Nursery School Magodo",
+      "url": "https://straitgatemagodo.educare.school/admission-form"
+    }
+  ],
   "hero_media_url": "",
   "hero_media_type": ""
 }

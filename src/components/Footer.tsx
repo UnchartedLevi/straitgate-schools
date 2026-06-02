@@ -64,7 +64,7 @@ export default function Footer({ general, schools }: FooterProps) {
         <div className="flex flex-col items-center py-12 text-center">
           <Link href="/" className="flex flex-col items-center gap-4" aria-label="Straitgate Schools home">
             <Image src="/logos.png" alt="Straitgate Schools logos" width={913} height={273} className="h-35 w-auto object-contain" unoptimized />
-            <span className="text-xl font-extrabold tracking-[0.16em]">STRAITGATE SCHOOLS</span>
+            <span className="font-serif text-xl font-extrabold tracking-[0.16em]">STRAITGATE SCHOOLS</span>
           </Link>
           <p className="mt-5 max-w-xl text-sm leading-6 text-white/50">{general.footer_message}</p>
         </div>

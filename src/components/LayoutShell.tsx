@@ -13,7 +13,7 @@ interface LayoutShellProps {
 export default function LayoutShell({ children, general, schools }: LayoutShellProps) {
   return (
     <>
-      <Navbar schools={schools} />
+      <Navbar schools={schools} admissionLinks={general.admission_links ?? []} />
       <main className="flex-1">{children}</main>
       <Footer general={general} schools={schools} />
     </>

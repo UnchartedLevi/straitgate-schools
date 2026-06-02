@@ -34,8 +34,14 @@ export interface General {
   values: string[];
   hero_text: string[];
   hero_images?: string[];
+  admission_links?: AdmissionLink[];
   hero_media_url: string;
   hero_media_type: string;
+}
+
+export interface AdmissionLink {
+  name: string;
+  url: string;
 }
 
 export interface School {
