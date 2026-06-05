@@ -11,25 +11,29 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
-  if (!testimonials?.length) return null;
-
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const testimonialCount = testimonials?.length ?? 0;
 
   useEffect(() => {
+    if (testimonialCount <= 1) return;
+
     const interval = setInterval(() => {
       setDirection(1);
-      setCurrent((prev) => (prev + 1) % testimonials.length);
+      setCurrent((prev) => (prev + 1) % testimonialCount);
     }, 5000);
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [testimonialCount]);
+
+  if (!testimonialCount) return null;
 
   const paginate = (dir: number) => {
     setDirection(dir);
-    setCurrent((prev) => (prev + dir + testimonials.length) % testimonials.length);
+    setCurrent((prev) => (prev + dir + testimonialCount) % testimonialCount);
   };
 
-  const t = testimonials[current];
+  const activeIndex = current % testimonialCount;
+  const t = testimonials[activeIndex];
 
   return (
     <section className="py-20 lg:py-28 bg-white">
@@ -84,9 +88,9 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+                    onClick={() => { setDirection(i > activeIndex ? 1 : -1); setCurrent(i); }}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === current ? 'bg-primary w-6' : 'bg-gray-300'
+                      i === activeIndex ? 'bg-primary w-6' : 'bg-gray-300'
                     }`}
                   />
                 ))}

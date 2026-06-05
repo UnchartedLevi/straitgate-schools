@@ -37,7 +37,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Coding / ICT Club</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Our ICT Club equips students with real-world digital skills — from web design and
+                Our ICT Club equips students with real-world digital skills Ã¢â‚¬â€ from web design and
                 programming to robotics. Students learn to think computationally and build solutions
                 that matter.
               </p>
@@ -46,6 +46,29 @@ export default function HomePage({ data }: { data: HomePageData }) {
         </div>
       </div>
       <div className="sticky top-0 z-20 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-[#f5f0eb]">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center px-16">
+            <img
+              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+              alt="Robotics Club"
+              className="rounded-2xl object-cover h-[500px] w-full"
+              loading="lazy"
+            />
+            <div>
+              <span className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-3">
+                Extracurricular
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Robotics Club</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Our Robotics Club gives students hands-on experience with design, coding, sensors,
+                and automation. Learners work in teams to build intelligent machines, test ideas,
+                and develop the problem-solving confidence needed for a technology-driven future.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="sticky top-0 z-30 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-white">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center px-16">
             <img
@@ -67,7 +90,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
           </div>
         </div>
       </div>
-      <div className="sticky top-0 z-30 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-white">
+      <div className="sticky top-0 z-40 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-white">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center px-16">
             <img
@@ -83,14 +106,14 @@ export default function HomePage({ data }: { data: HomePageData }) {
               <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Press Club</h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 The Press Club trains the next generation of communicators. Students learn
-                journalism, photography, and public speaking — giving them a voice that reaches
+                journalism, photography, and public speaking Ã¢â‚¬â€ giving them a voice that reaches
                 beyond the classroom.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="sticky top-0 z-40 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-primary">
+      <div className="sticky top-0 z-50 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-primary">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center px-16">
             <img
@@ -113,7 +136,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
           </div>
         </div>
       </div>
-      <div className="sticky top-0 z-50 flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-light">
+      <div className="sticky top-0 z-[60] flex h-screen items-center justify-center overflow-hidden rounded-t-3xl bg-light">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center px-16">
             <img
@@ -136,7 +159,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
           </div>
         </div>
       </div>
-      <div className="relative z-50 overflow-hidden rounded-t-3xl bg-white">
+      <div className="relative z-[60] overflow-hidden rounded-t-3xl bg-white">
         <SchoolHeadSection />
         <MissionVisionSection general={data.general} />
         <AlumniSection schools={data.schools} />

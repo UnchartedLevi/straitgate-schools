@@ -11,7 +11,7 @@ export default function SchoolHeadSection() {
           <FadeIn direction="right">
             <div className="max-w-2xl">
               <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
-                Word from the School Head
+                Message from the Chairman
               </span>
               <h2 className="font-serif text-4xl leading-tight text-dark sm:text-5xl lg:text-6xl">
                 We are raising learners who can lead with wisdom, faith, and disciplined imagination.
@@ -27,9 +27,9 @@ export default function SchoolHeadSection() {
                 grow into thoughtful young people who serve, create, and stand for what is right.
               </p>
               <div className="mt-8 border-l-4 border-primary pl-5">
-                <p className="font-semibold text-dark">The School Head</p>
+                <p className="font-semibold text-dark">Mr Ade Adetayo</p>
                 <p className="mt-1 text-sm uppercase tracking-wider text-gray-500">
-                  Straitgate Schools
+                  Chairman, Straitgate Schools
                 </p>
               </div>
             </div>
@@ -41,8 +41,8 @@ export default function SchoolHeadSection() {
               <div className="relative overflow-hidden bg-light shadow-2xl">
                 <div className="aspect-[4/5]">
                   <Image
-                    src="/images/avatar.png"
-                    alt="Portrait of the Straitgate Schools head"
+                    src="/WhatsApp Image 2026-06-05 at 12.22.25.jpeg"
+                    alt="Portrait of Mr Ade Adetayo, Chairman of Straitgate Schools"
                     width={900}
                     height={1125}
                     className="h-full w-full object-cover"
@@ -56,9 +56,9 @@ export default function SchoolHeadSection() {
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 hidden bg-primary px-6 py-5 text-white shadow-xl sm:block">
-                <p className="font-serif text-4xl leading-none">20+</p>
+                <p className="font-serif text-3xl leading-none">Mr Ade Adetayo</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider">
-                  Years of formation
+                  Chairman
                 </p>
               </div>
             </div>

@@ -146,7 +146,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
     <>
       <motion.header
         initial={false}
-        animate={{ y: navVisible ? 0 : '-100%' }}
+        animate={{ y: menuOpen || !navVisible ? '-100%' : 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
         className={`fixed inset-x-0 top-0 z-[999] border-b transition-colors duration-300 ${
           scrolled ? 'border-black/10 bg-white text-black shadow-lg' : 'border-white/15 bg-transparent text-white'
@@ -207,7 +207,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ duration: 0.45, ease: 'easeInOut' }}
-            className="no-scrollbar fixed inset-0 z-[60] overflow-y-auto bg-[#080808] text-white"
+            className="no-scrollbar fixed inset-0 z-[1000] overflow-y-auto bg-[#080808] text-white"
           >
             <div className="border-b border-white/10">
               <div className="flex h-20 w-full items-center justify-between px-2 sm:h-24 sm:px-4 lg:px-5">

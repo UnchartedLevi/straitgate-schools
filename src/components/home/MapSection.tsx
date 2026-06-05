@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { MapPinIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import FadeIn from '@/components/FadeIn';
 
@@ -27,13 +28,16 @@ const locations = [
   },
 ];
 
+const ClientMap = dynamic(() => Promise.resolve(MapInner), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[450px] items-center justify-center bg-gray-100">
+      <p className="text-gray-400">Loading map...</p>
+    </div>
+  ),
+});
+
 export default function MapSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <section className="bg-white py-20 px-8">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -80,13 +84,7 @@ export default function MapSection() {
         {/* Right: existing Leaflet map (unchanged) */}
         <FadeIn direction="right">
           <div className="overflow-hidden rounded-2xl shadow-xl">
-            {mounted ? (
-              <MapInner />
-            ) : (
-              <div className="flex h-[450px] items-center justify-center bg-gray-100">
-                <p className="text-gray-400">Loading map...</p>
-              </div>
-            )}
+            <ClientMap />
           </div>
         </FadeIn>
       </div>
