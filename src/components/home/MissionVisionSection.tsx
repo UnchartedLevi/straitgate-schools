@@ -20,26 +20,11 @@ export default function MissionVisionSection({ general, section }: MissionVision
     <>
       {/* Mission */}
       {showMission && general.mission && (
-        <div className="relative overflow-hidden">
-          <motion.div
-            initial={{ scaleX: 1 }}
-            whileInView={{ scaleX: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            style={{ transformOrigin: 'left' }}
-            className="absolute inset-0 z-20 bg-primary"
-          />
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="py-20 lg:py-28 bg-light"
-          >
+        <section className="py-20 lg:py-28 bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <motion.div
-                initial={{ opacity: 0, x: -80 }}
+                initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -52,105 +37,54 @@ export default function MissionVisionSection({ general, section }: MissionVision
                   loading="lazy"
                 />
               </motion.div>
-              <div>
-                <motion.span
-                  initial={{ opacity: 0, x: 80 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-3"
-                >
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+              >
+                <span className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-3">
                   Our Purpose
-                </motion.span>
-                <motion.h2
-                  initial={{ opacity: 0, x: 80 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="text-3xl lg:text-4xl font-bold text-dark mb-6"
-                >
-                  Mission
-                </motion.h2>
-                <motion.div
-                  initial={{ opacity: 0, x: 80 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="space-y-3 text-gray-600 text-lg leading-relaxed"
-                >
+                </span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-6">Mission</h2>
+                <div className="space-y-3 text-gray-600 text-lg leading-relaxed">
                   {general.mission.split('\n').filter(Boolean).map((line, i) => (
                     <p key={i}>{line}</p>
                   ))}
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-          </motion.section>
-        </div>
+        </section>
       )}
 
       {/* Vision & Values */}
       {showVision && (general.vision || general.values) && (
-        <div className="relative overflow-hidden">
-          <motion.div
-            initial={{ scaleX: 1 }}
-            whileInView={{ scaleX: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            style={{ transformOrigin: 'left' }}
-            className="absolute inset-0 z-20 bg-primary"
-          />
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="py-20 lg:py-28 bg-white"
-          >
+        <section className="py-20 lg:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+              >
                 {general.vision && (
                   <div className="mb-10">
-                    <motion.span
-                      initial={{ opacity: 0, x: -80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.8, ease: 'easeOut' }}
-                      className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-3"
-                    >
+                    <span className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-3">
                       Our Direction
-                    </motion.span>
-                    <motion.h2
-                      initial={{ opacity: 0, x: -80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.8, ease: 'easeOut' }}
-                      className="text-3xl lg:text-4xl font-bold text-dark mb-6"
-                    >
-                      Vision
-                    </motion.h2>
-                    <motion.div
-                      initial={{ opacity: 0, x: -80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.8, ease: 'easeOut' }}
-                      className="space-y-3 text-gray-600 text-lg leading-relaxed"
-                    >
+                    </span>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-6">Vision</h2>
+                    <div className="space-y-3 text-gray-600 text-lg leading-relaxed">
                       {general.vision.split('\n').filter(Boolean).map((line, i) => (
                         <p key={i}>{line}</p>
                       ))}
-                    </motion.div>
+                    </div>
                   </div>
                 )}
 
                 {general.values && general.values.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -80 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
-                  >
+                  <div>
                     <h3 className="text-2xl font-bold text-dark mb-4">Values</h3>
                     <div className="space-y-3">
                       {general.values.map((val, i) => (
@@ -160,12 +94,12 @@ export default function MissionVisionSection({ general, section }: MissionVision
                         </div>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </div>
+              </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 80 }}
+                initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -180,8 +114,7 @@ export default function MissionVisionSection({ general, section }: MissionVision
               </motion.div>
             </div>
           </div>
-          </motion.section>
-        </div>
+        </section>
       )}
     </>
   );
