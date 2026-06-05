@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { MapPinIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import FadeIn from '@/components/FadeIn';
 
 const locations = [
@@ -33,22 +34,62 @@ export default function MapSection() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return (
-      <section className="h-[450px] bg-gray-100 flex items-center justify-center">
-        <p className="text-gray-400">Loading map...</p>
-      </section>
-    );
-  }
-
   return (
-    <section>
-      <FadeIn>
-        <div className="relative">
-          <MapInner />
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white pointer-events-none" />
-        </div>
-      </FadeIn>
+    <section className="bg-white py-20 px-8">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Left: text + address cards */}
+        <FadeIn direction="left">
+          <div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-4">
+              Visit Our <span className="text-primary">Campuses</span>
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              Our schools are spread across Lagos and Ogun State, each offering a warm,
+              welcoming environment for learning. Find the campus nearest you and come say hello.
+            </p>
+
+            <div className="space-y-4">
+              {locations.map((loc, i) => (
+                <div
+                  key={i}
+                  className="flex gap-4 rounded-2xl border border-gray-100 bg-light p-5 shadow-sm"
+                >
+                  <span className="mt-1.5 h-3 w-3 flex-shrink-0 rounded-full bg-primary" />
+                  <div>
+                    <h3 className="font-bold text-dark">{loc.title}</h3>
+                    <p className="mt-1 flex items-start gap-2 text-gray-600">
+                      <MapPinIcon className="h-5 w-5 flex-shrink-0 text-primary" />
+                      <span>{loc.address}</span>
+                    </p>
+                    <a
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${loc.coords[0]},${loc.coords[1]}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wider text-primary transition-colors hover:text-primary-dark"
+                    >
+                      Get Directions
+                      <ArrowUpRightIcon className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Right: existing Leaflet map (unchanged) */}
+        <FadeIn direction="right">
+          <div className="overflow-hidden rounded-2xl shadow-xl">
+            {mounted ? (
+              <MapInner />
+            ) : (
+              <div className="flex h-[450px] items-center justify-center bg-gray-100">
+                <p className="text-gray-400">Loading map...</p>
+              </div>
+            )}
+          </div>
+        </FadeIn>
+      </div>
     </section>
   );
 }

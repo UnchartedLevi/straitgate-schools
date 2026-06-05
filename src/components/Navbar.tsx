@@ -148,7 +148,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
         initial={false}
         animate={{ y: navVisible ? 0 : '-100%' }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        className={`fixed inset-x-0 top-0 z-[999] border-b transition-colors duration-300 ${
           scrolled ? 'border-black/10 bg-white text-black shadow-lg' : 'border-white/15 bg-transparent text-white'
         }`}
       >
