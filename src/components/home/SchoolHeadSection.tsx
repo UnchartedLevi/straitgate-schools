@@ -37,8 +37,8 @@ export default function SchoolHeadSection() {
 
           <FadeIn direction="left" delay={0.15}>
             <div className="relative mx-auto w-full max-w-lg lg:ml-auto">
-              <div className="absolute -left-5 -top-5 h-full w-full border-4 border-primary/70" />
-              <div className="relative overflow-hidden bg-light shadow-[0_34px_45px_-18px_rgba(0,0,0,0.55)]">
+              <div className="absolute -left-5 -top-5 h-full w-full border border-primary/25" />
+              <div className="relative overflow-hidden bg-light shadow-2xl">
                 <div className="aspect-[4/5]">
                   <Image
                     src="/WhatsApp Image 2026-06-05 at 12.22.25.jpeg"
