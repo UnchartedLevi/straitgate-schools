@@ -134,7 +134,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
           <ul className={`${compact ? 'mt-2' : 'mt-4'} divide-y divide-white/10`}>
             {schools.map((school) => (
               <li key={school.id}>
-                <Link href={`/schools/${school.initial}`} onClick={closeMenu} className={`${compact ? 'py-2.5 text-base' : 'py-3 text-lg'} block font-semibold leading-7 text-white/80 transition-colors hover:text-primary`}>
+                <Link href={`/schools/${school.initial}`} target="_blank" rel="noopener noreferrer" onClick={closeMenu} className={`${compact ? 'py-2.5 text-base' : 'py-3 text-lg'} block font-semibold leading-7 text-white/80 transition-colors hover:text-primary`}>
                   {school.name}
                 </Link>
               </li>

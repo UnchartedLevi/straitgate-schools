@@ -83,7 +83,7 @@ export default function HeroSection({ general }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl font-medium leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
             >
               {activeText}
             </motion.h1>

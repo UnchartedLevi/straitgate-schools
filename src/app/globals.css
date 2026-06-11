@@ -37,6 +37,41 @@ body {
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
+@keyframes sponsors-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sponsors-marquee {
+  animation: sponsors-marquee 42s linear infinite;
+}
+
+.sponsors-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes facilities-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.facilities-marquee {
+  animation: facilities-marquee 50s linear infinite;
+  width: max-content;
+}
+
+.facilities-marquee:hover {
+  animation-play-state: paused;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

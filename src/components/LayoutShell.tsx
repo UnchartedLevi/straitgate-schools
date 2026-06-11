@@ -2,6 +2,7 @@
 
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ChatWidget from './ChatWidget';
 import { General, School } from '@/lib/content';
 
 interface LayoutShellProps {
@@ -16,6 +17,7 @@ export default function LayoutShell({ children, general, schools }: LayoutShellP
       <Navbar schools={schools} admissionLinks={general.admission_links ?? []} />
       <main className="flex-1">{children}</main>
       <Footer general={general} schools={schools} />
+      <ChatWidget />
     </>
   );
 }
