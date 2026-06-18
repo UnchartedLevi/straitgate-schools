@@ -19,7 +19,7 @@ export default function WelcomeSection({ general }: WelcomeSectionProps) {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/students.png"
+                  src="/sgpics/magodo-hero.jpg"
                   alt="Straitgate students"
                   className="w-full h-full object-cover"
                   loading="lazy"

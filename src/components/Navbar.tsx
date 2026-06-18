@@ -37,15 +37,46 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const pathSegments = pathname.split('/').filter(Boolean);
   const activeSchoolSlug = pathSegments[0] === 'schools' ? pathSegments[1] : undefined;
   const activeSchool = schools.find((school) => school.initial === activeSchoolSlug);
+  const activeAdmissionTerm =
+    activeSchoolSlug === 'sc' ? 'college'
+    : activeSchoolSlug === 'shs' ? 'high'
+    : activeSchoolSlug === 'snps-magboro' ? 'forthright'
+    : activeSchoolSlug === 'snps-magodo' ? 'magodo'
+    : '';
+  const activeAdmissionLink = activeAdmissionTerm
+    ? admissionLinks.find((link) => link.name.toLowerCase().includes(activeAdmissionTerm))
+    : undefined;
   const brandLabel = activeSchool ? activeSchool.name.toUpperCase() : 'STRAITGATE SCHOOLS';
   const isStraitgateCollege = activeSchoolSlug === 'sc';
-  const logoSrc = isStraitgateCollege ? '/logosc.png' : '/logos.png';
-  const logoAlt = isStraitgateCollege ? 'Straitgate College logo' : 'Straitgate Schools logos';
-  const logoWidth = isStraitgateCollege ? 280 : 913;
-  const logoHeight = isStraitgateCollege ? 267 : 273;
-  const logoClassName = isStraitgateCollege
-    ? 'h-14 w-auto object-contain sm:h-20'
-    : 'h-11 w-auto object-contain sm:h-20';
+  const logoConfig =
+    activeSchoolSlug === 'sc'
+      ? {
+          src: '/sgpics/logos/straitgate-college.png',
+          alt: 'Straitgate College logo',
+          width: 280,
+          height: 267,
+        }
+      : activeSchoolSlug === 'shs'
+        ? {
+            src: '/sgpics/logos/straitgate-high-school.png',
+            alt: 'Straitgate High School logo',
+            width: 248,
+            height: 292,
+          }
+        : activeSchoolSlug === 'snps-magodo' || activeSchoolSlug === 'snps-magboro'
+          ? {
+              src: '/sgpics/logos/straitgate-nursery-primary.png',
+              alt: 'Straitgate Nursery and Primary logo',
+              width: 267,
+              height: 277,
+            }
+          : {
+              src: '/sgpics/logos/home.png',
+              alt: 'Straitgate Schools logo',
+              width: 840,
+              height: 472,
+            };
+  const logoClassName = 'h-14 w-auto object-contain sm:h-20';
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,7 +134,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
 
   const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
     closeMenu();
-    if (isStraitgateCollege) {
+    if (activeSchoolSlug) {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.setTimeout(() => window.location.reload(), 250);
@@ -178,16 +209,16 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
       >
         <div className="flex h-20 w-full items-stretch justify-between pl-2 sm:h-24 sm:pl-4 lg:pl-5">
           <Link
-            href={isStraitgateCollege ? '/schools/sc/' : '/'}
+            href={activeSchoolSlug ? pathname : '/'}
             onClick={handleBrandClick}
             className="flex items-center gap-3"
             aria-label={isStraitgateCollege ? 'Refresh Straitgate College page' : 'Straitgate Schools home'}
           >
             <Image
-              src={logoSrc}
-              alt={logoAlt}
-              width={logoWidth}
-              height={logoHeight}
+              src={logoConfig.src}
+              alt={logoConfig.alt}
+              width={logoConfig.width}
+              height={logoConfig.height}
               className={logoClassName}
               priority
               unoptimized
@@ -201,14 +232,26 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
           </Link>
 
           <div className="flex items-stretch">
-            <button
-              type="button"
-              onClick={() => openMenu('Admissions')}
-              className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
-            >
-              Apply
-              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            {activeAdmissionLink ? (
+              <a
+                href={activeAdmissionLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
+              >
+                Apply
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => openMenu('Admissions')}
+                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
+              >
+                Apply
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            )}
             <button
               type="button"
               onClick={() => openMenu()}
@@ -239,16 +282,16 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
             <div className="border-b border-white/10">
               <div className="flex h-20 w-full items-center justify-between px-2 sm:h-24 sm:px-4 lg:px-5">
                 <Link
-                  href={isStraitgateCollege ? '/schools/sc/' : '/'}
+                  href={activeSchoolSlug ? pathname : '/'}
                   onClick={handleBrandClick}
                   className="flex items-center gap-3"
                   aria-label={isStraitgateCollege ? 'Refresh Straitgate College page' : 'Straitgate Schools home'}
                 >
                   <Image
-                    src={logoSrc}
-                    alt={logoAlt}
-                    width={logoWidth}
-                    height={logoHeight}
+                    src={logoConfig.src}
+                    alt={logoConfig.alt}
+                    width={logoConfig.width}
+                    height={logoConfig.height}
                     className={logoClassName}
                     unoptimized
                   />

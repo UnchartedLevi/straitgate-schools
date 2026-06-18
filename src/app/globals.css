@@ -54,24 +54,6 @@ body {
   animation-play-state: paused;
 }
 
-@keyframes facilities-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.facilities-marquee {
-  animation: facilities-marquee 50s linear infinite;
-  width: max-content;
-}
-
-.facilities-marquee:hover {
-  animation-play-state: paused;
-}
-
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
