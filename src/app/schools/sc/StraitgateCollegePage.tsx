@@ -68,52 +68,52 @@ const headMessage =
 
 const collegeImages = [
   {
-    src: '/hero-classroom.webp',
+    src: '/sgpics/college-hero.jpg',
     alt: 'Straitgate College classroom learning',
     label: 'Focused learning',
   },
   {
-    src: '/hero-students.webp',
+    src: '/sgpics/college-academic-journey.png',
     alt: 'Straitgate College students on campus',
     label: 'Student community',
   },
   {
-    src: '/hero-campus.webp',
+    src: '/sgpics/magboro-hero.jpg',
     alt: 'Straitgate College campus environment',
     label: 'Purposeful campus',
   },
   {
-    src: '/hero-classroom.webp',
+    src: '/straitgate-high-school.jpg',
     alt: 'Straitgate College guided study session',
     label: 'Guided study',
   },
   {
-    src: '/hero-students.webp',
+    src: '/straitgate-nursery-and-primary-school-magodo.jpg',
     alt: 'Straitgate College student collaboration',
     label: 'Student collaboration',
   },
   {
-    src: '/hero-campus.webp',
+    src: '/straitgate-nursery-and-primary-school-forthright-gallery.jpg',
     alt: 'Straitgate College outdoor campus life',
     label: 'Campus life',
   },
   {
-    src: '/hero-classroom.webp',
+    src: '/sgpics/magodo-why-straitgate.jpg',
     alt: 'Straitgate College academic instruction',
     label: 'Academic instruction',
   },
   {
-    src: '/hero-students.webp',
+    src: '/sgpics/magboro-why-straitgate.jpg',
     alt: 'Straitgate College student leadership activities',
     label: 'Leadership moments',
   },
   {
-    src: '/hero-campus.webp',
+    src: '/sgpics/high-school-hero.jpg',
     alt: 'Straitgate College school grounds',
     label: 'School grounds',
   },
   {
-    src: '/hero-students.webp',
+    src: '/sgpics/magodo-hero.jpg',
     alt: 'Straitgate College students during school activities',
     label: 'Active student life',
   },
@@ -124,94 +124,60 @@ const videoStories = [
     title: 'College classroom moments',
     platform: 'YouTube',
     href: 'https://www.youtube.com/results?search_query=Straitgate+College',
-    image: '/hero-classroom.webp',
-  },
-  {
-    title: 'Student life highlights',
-    platform: 'TikTok',
-    href: 'https://www.tiktok.com/search?q=Straitgate%20College',
-    image: '/hero-students.webp',
-  },
-  {
-    title: 'Campus and events',
-    platform: 'YouTube',
-    href: 'https://www.youtube.com/results?search_query=Straitgate+Schools',
-    image: '/hero-campus.webp',
-  },
-  {
-    title: 'Clubs and leadership',
-    platform: 'TikTok',
-    href: 'https://www.tiktok.com/search?q=Straitgate%20Schools',
-    image: '/hero-students.webp',
-  },
-  {
-    title: 'Learning beyond class',
-    platform: 'YouTube',
-    href: 'https://www.youtube.com/results?search_query=Straitgate+College+students',
-    image: '/hero-classroom.webp',
+    image: '/sgpics/college-hero.jpg',
   },
 ];
 
 const facilities = [
   {
     title: 'Science Lab',
-    description:
-      'A practical learning space where students observe, test, and connect science concepts to real experiments.',
-    image: 'https://images.pexels.com/photos/8471988/pexels-photo-8471988.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Practical science and experiment space.',
+    image: '/sgpics/college-academic-journey.png',
   },
   {
     title: 'Music Room',
-    description:
-      'A creative room for rehearsals, performance confidence, rhythm, voice, and expressive arts development.',
-    image: 'https://images.pexels.com/photos/9644668/pexels-photo-9644668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Music, rehearsal, and performance room.',
+    image: '/sgpics/home-music-performing-arts.jpg',
   },
   {
     title: 'ICT Lab',
-    description:
-      'A technology-enabled lab for digital literacy, research, coding practice, and guided computer-based learning.',
-    image: 'https://images.pexels.com/photos/10638065/pexels-photo-10638065.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Digital literacy and research lab.',
+    image: '/sgpics/home-stem-club.jpg',
   },
   {
     title: 'Library',
-    description:
-      'A quiet reading and research environment that supports study habits, literacy, and independent learning.',
-    image: 'https://images.pexels.com/photos/9572376/pexels-photo-9572376.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Quiet reading and study space.',
+    image: '/sgpics/home-press-club.jpg',
   },
   {
     title: 'Football Pitch',
-    description:
-      'An open sports field where students build teamwork, fitness, and discipline through competitive play.',
-    image: 'https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Open field for football and fitness.',
+    image: '/sgpics/home-football-academy.jpg',
   },
   {
     title: 'Swimming Pool',
-    description:
-      'A supervised pool for swimming lessons, water confidence, and healthy physical development.',
-    image: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Supervised swimming and water confidence.',
+    image: '/sgpics/magodo-why-straitgate.jpg',
   },
   {
     title: 'Art Studio',
-    description:
-      'A bright creative space for drawing, painting, design, and hands-on artistic expression.',
-    image: 'https://images.pexels.com/photos/1153213/pexels-photo-1153213.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Drawing, painting, and design studio.',
+    image: '/sgpics/home-our-purpose.jpg',
   },
   {
     title: 'Boarding House',
-    description:
-      'A safe, well-supervised residence where boarders enjoy structured study, rest, and community life.',
-    image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Supervised boarding and study routines.',
+    image: '/sgpics/college-hero.jpg',
   },
   {
     title: 'Cafeteria',
-    description:
-      'A spacious dining hall serving balanced meals that keep students nourished and ready to learn.',
-    image: 'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Balanced meals in a shared dining hall.',
+    image: '/sgpics/magboro-hero.jpg',
   },
   {
     title: 'Auditorium',
-    description:
-      'A versatile hall for assemblies, performances, debates, and large school gatherings.',
-    image: 'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'Assemblies, debates, and performances.',
+    image: '/sgpics/high-school-hero.jpg',
   },
 ];
 
@@ -222,15 +188,35 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
   const applyHref = 'https://sgc.educare.school/admission-form';
   const address = school?.address || 'Road D, Forthright Gardens Estate, Magboro, Ogun State';
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-  const scrollableVideoStories = [videoStories[videoStories.length - 1], ...videoStories, videoStories[0]];
+  const scrollableVideoStories = videoStories;
 
   useEffect(() => {
+    if (videoStories.length <= 1) return;
     const track = videoTrackRef.current;
     const firstCard = track?.querySelector<HTMLElement>('[data-video-card="true"]');
     if (!track || !firstCard) return;
 
     const gap = 40;
     track.scrollLeft = firstCard.offsetWidth + gap;
+  }, []);
+
+  useEffect(() => {
+    const track = galleryTrackRef.current;
+    if (!track) return;
+
+    let frame = 0;
+    const scroll = () => {
+      const loopPoint = track.scrollWidth / 2;
+      if (track.scrollLeft >= loopPoint) {
+        track.scrollLeft = 0;
+      } else {
+        track.scrollLeft += 0.55;
+      }
+      frame = window.requestAnimationFrame(scroll);
+    };
+
+    frame = window.requestAnimationFrame(scroll);
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const scrollGallery = (direction: number) => {
@@ -255,7 +241,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
       <section className="relative min-h-screen overflow-hidden bg-[#080808] text-white">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-70"
-          style={{ backgroundImage: "url('/hero-campus.webp')" }}
+          style={{ backgroundImage: "url('/sgpics/college-hero.jpg')" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-[#080808]" />
@@ -292,7 +278,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
                 href="/contact"
                 className="inline-flex min-h-12 items-center justify-center border border-white/30 bg-white/10 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur transition-colors hover:bg-white hover:text-dark"
               >
-                Book a Visit
+                Contact us
               </Link>
             </div>
           </motion.div>
@@ -301,12 +287,8 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
-            className="mt-12 grid max-w-4xl gap-3 sm:grid-cols-3"
+            className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-2"
           >
-            <div className="border border-white/15 bg-white/10 p-5 backdrop-blur">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/50">Students</p>
-              <p className="mt-2 text-3xl font-black">{school?.students_count ?? '800'}+</p>
-            </div>
             <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors hover:bg-white/15">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/50">Location</p>
               <p className="mt-2 flex items-start gap-2 text-sm font-semibold leading-6 text-white/85">
@@ -402,9 +384,9 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
             className="no-scrollbar mt-10 overflow-x-auto scroll-smooth"
           >
             <div className="flex min-h-[34rem] gap-5">
-              {collegeImages.map((item) => (
+              {[...collegeImages, ...collegeImages].map((item, index) => (
                 <div
-                  key={`${item.label}-${item.src}`}
+                  key={`${item.label}-${item.src}-${index}`}
                   data-gallery-card="true"
                   className="relative min-h-[34rem] shrink-0 basis-full overflow-hidden rounded-[1.75rem] bg-light shadow-2xl shadow-black/10 md:basis-[calc((100%_-_2.5rem)/3)]"
                 >
@@ -439,7 +421,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
             </div>
             <div className="relative min-h-[34rem] overflow-hidden rounded-[1.75rem] bg-light shadow-2xl shadow-black/10">
               <Image
-                src="/hero-students.webp"
+                src="/sgpics/college-hero.jpg"
                 alt="Straitgate College student learning in class"
                 fill
                 sizes="(min-width: 1024px) 44vw, 100vw"
@@ -456,7 +438,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
                   key={pillar.title}
                   {...fadeUp}
                   transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                  className="group relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-7 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.65)] transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_26px_55px_-30px_rgba(172,12,48,0.55)]"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-7 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.65)] transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_26px_55px_-30px_rgba(172,12,48,0.55)]"
                 >
                   <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
                   <div className="flex items-center justify-between gap-4">
@@ -467,7 +449,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
                   </div>
                   <h3 className="mt-7 text-2xl font-bold text-dark">{pillar.title}</h3>
                   <p className="mt-4 leading-7 text-gray-600">{pillar.description}</p>
-                  <div className="mt-7 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-primary">
+                  <div className="mt-auto flex items-center gap-2 pt-7 text-sm font-bold uppercase tracking-[0.14em] text-primary">
                     <span className="h-px w-8 bg-primary/60 transition-all group-hover:w-12" />
                     College pillar
                   </div>
@@ -497,7 +479,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
 
           <div className="relative min-h-[520px] overflow-hidden bg-white lg:min-h-full">
             <Image
-              src="/hero-classroom.webp"
+              src="/sgpics/college-academic-journey.png"
               alt="Straitgate College classroom learning"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -565,63 +547,52 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
                 ))}
               </div>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6">
-              <button
-                type="button"
-                aria-label="Previous college video"
-                onClick={() => scrollVideo(-1)}
-                className="flex h-12 w-12 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-white"
-              >
-                <ArrowLeftIcon className="h-8 w-8" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next college video"
-                onClick={() => scrollVideo(1)}
-                className="flex h-12 w-12 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-white"
-              >
-                <ArrowRightIcon className="h-8 w-8" />
-              </button>
-            </div>
+            {videoStories.length > 1 && (
+              <div className="mt-8 flex items-center justify-center gap-6">
+                <button
+                  type="button"
+                  aria-label="Previous college video"
+                  onClick={() => scrollVideo(-1)}
+                  className="flex h-12 w-12 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-white"
+                >
+                  <ArrowLeftIcon className="h-8 w-8" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next college video"
+                  onClick={() => scrollVideo(1)}
+                  className="flex h-12 w-12 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary hover:text-white"
+                >
+                  <ArrowRightIcon className="h-8 w-8" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       <section className="bg-[#f3f0ea] py-20 text-dark sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="font-serif text-4xl font-bold leading-tight text-primary sm:text-5xl">Facilities</p>
             <h2 className="mt-4 text-xl font-semibold leading-8 text-dark/70 sm:text-2xl">
               Purpose-built spaces for science, creativity, technology, and reading culture.
             </h2>
-          </motion.div>
+          </div>
 
-          <div className="mt-12 overflow-hidden">
-            <div className="facilities-marquee flex w-max gap-6">
-              {[...facilities, ...facilities].map((facility, index) => (
-                <article
-                  key={`${facility.title}-${index}`}
-                  tabIndex={0}
-                  className="group relative min-h-[25rem] w-[18rem] shrink-0 overflow-hidden rounded-[1.75rem] bg-white shadow-[0_24px_60px_-36px_rgba(0,0,0,0.65)] outline-none ring-1 ring-black/5 sm:w-[20rem]"
-                >
-                  <Image
-                    src={facility.image}
-                    alt={`${facility.title} at Straitgate College`}
-                    fill
-                    sizes="(min-width: 640px) 20rem, 18rem"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-visible:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/10 group-focus-visible:bg-primary/10" />
-                  <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h3 className="text-2xl font-black text-white">{facility.title}</h3>
-                    <p className="mt-4 max-h-0 overflow-hidden text-sm font-medium leading-6 text-white/78 opacity-0 transition-all duration-500 group-hover:max-h-32 group-hover:opacity-100 group-focus-visible:max-h-32 group-focus-visible:opacity-100">
-                      {facility.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {facilities.map((facility) => (
+              <article
+                key={facility.title}
+                className="rounded-lg border border-black/10 bg-white p-5 shadow-sm"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <SparklesIcon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-base font-black text-dark">{facility.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-gray-600">{facility.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

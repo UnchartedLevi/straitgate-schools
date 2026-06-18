@@ -31,7 +31,7 @@ export default function MissionVisionSection({ general, section }: MissionVision
                 className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1000&q=80"
+                  src="/sgpics/home-our-purpose.jpg"
                   alt="Our mission"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -103,7 +103,7 @@ export default function MissionVisionSection({ general, section }: MissionVision
                 className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1000&q=80"
+                  src="/sgpics/home-vision.jpg"
                   alt="Our vision"
                   className="w-full h-full object-cover"
                   loading="lazy"
