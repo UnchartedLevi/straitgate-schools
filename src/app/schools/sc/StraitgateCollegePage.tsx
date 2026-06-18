@@ -73,7 +73,7 @@ const collegeImages = [
     label: 'Focused learning',
   },
   {
-    src: '/sgpics/college-academic-journey.png',
+    src: '/sgpics/college-academic-journey.jpg',
     alt: 'Straitgate College students on campus',
     label: 'Student community',
   },
@@ -132,7 +132,7 @@ const facilities = [
   {
     title: 'Science Lab',
     description: 'Practical science and experiment space.',
-    image: '/sgpics/college-academic-journey.png',
+    image: '/sgpics/college-academic-journey.jpg',
   },
   {
     title: 'Music Room',
@@ -479,7 +479,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
 
           <div className="relative min-h-[520px] overflow-hidden bg-white lg:min-h-full">
             <Image
-              src="/sgpics/college-academic-journey.png"
+              src="/sgpics/college-academic-journey.jpg"
               alt="Straitgate College classroom learning"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
