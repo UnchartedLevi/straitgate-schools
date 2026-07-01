@@ -5,23 +5,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  AcademicCapIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
-  BeakerIcon,
   CheckCircleIcon,
-  ComputerDesktopIcon,
   FilmIcon,
-  FireIcon,
-  GiftIcon,
-  LanguageIcon,
   LinkIcon,
   MapPinIcon,
   PlayIcon,
   SparklesIcon,
-  TrophyIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
+import SchoolPillarsSection from '@/components/schools/SchoolPillarsSection';
 import type { AdmissionLink, School } from '@/lib/content';
 
 type StraitgatePrimaryMagodoPageProps = {
@@ -45,49 +39,41 @@ const pillars = [
     title: 'Excellence',
     description:
       'Consistently outstanding performance in national and international assessments.',
-    icon: AcademicCapIcon,
   },
   {
     title: 'Awards',
     description:
       'Victories in spelling bees, mathematics contests, and creative writing competitions.',
-    icon: TrophyIcon,
   },
   {
     title: 'Digital Learning',
     description:
       'Modern digital tools including interactive boards and an LMS for blended learning.',
-    icon: ComputerDesktopIcon,
   },
   {
     title: 'Christian Values',
     description:
       'Faith, integrity, and compassion woven into daily school life and character formation.',
-    icon: SparklesIcon,
   },
   {
     title: 'Sports',
     description:
       'Active sports and games that build teamwork, discipline, fitness, and healthy competition.',
-    icon: FireIcon,
   },
   {
     title: 'Science Projects',
     description:
       'Hands-on experiments and projects that spark curiosity and practical understanding.',
-    icon: BeakerIcon,
   },
   {
     title: 'Bilingualism',
     description:
       'Confident communication and language skills nurtured for a truly global perspective.',
-    icon: LanguageIcon,
   },
   {
     title: 'Charity',
     description:
       'Service and giving that grow kindness, empathy, and social responsibility in every pupil.',
-    icon: GiftIcon,
   },
 ];
 
@@ -449,35 +435,13 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
             </div>
           </motion.div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
-              return (
-                <motion.article
-                  key={pillar.title}
-                  {...fadeUp}
-                  transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                  className="group relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-7 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.65)] transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_26px_55px_-30px_rgba(172,12,48,0.55)]"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <span className="font-serif text-5xl leading-none text-primary/10">0{index + 1}</span>
-                  </div>
-                  <h3 className="mt-7 text-2xl font-bold text-dark">{pillar.title}</h3>
-                  <p className="mt-4 leading-7 text-gray-600">{pillar.description}</p>
-                  <div className="mt-7 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-primary">
-                    <span className="h-px w-8 bg-primary/60 transition-all group-hover:w-12" />
-                    Key achievement
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
         </div>
       </section>
+
+      <SchoolPillarsSection
+        pillars={pillars}
+        label="Why choose Straitgate Primary School Magodo"
+      />
 
       <section className="overflow-hidden bg-light text-dark">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-2">

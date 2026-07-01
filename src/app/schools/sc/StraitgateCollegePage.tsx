@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  AcademicCapIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   CheckCircleIcon,
@@ -14,9 +13,9 @@ import {
   MapPinIcon,
   PlayIcon,
   SparklesIcon,
-  TrophyIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
+import SchoolPillarsSection from '@/components/schools/SchoolPillarsSection';
 import type { AdmissionLink, School } from '@/lib/content';
 
 type StraitgateCollegePageProps = {
@@ -40,19 +39,16 @@ const pillars = [
     title: 'Academic confidence',
     description:
       'A focused college environment where learners are stretched, supported, and prepared for the next stage of their education.',
-    icon: AcademicCapIcon,
   },
   {
     title: 'Christ-centered character',
     description:
       'Faith, discipline, integrity, and service are woven into the daily rhythm of school life.',
-    icon: SparklesIcon,
   },
   {
     title: 'Leadership by practice',
     description:
       'Students are encouraged to lead, collaborate, speak confidently, and serve their community with purpose.',
-    icon: TrophyIcon,
   },
 ];
 
@@ -430,35 +426,10 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
             </div>
           </motion.div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
-              return (
-                <motion.article
-                  key={pillar.title}
-                  {...fadeUp}
-                  transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-7 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.65)] transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_26px_55px_-30px_rgba(172,12,48,0.55)]"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <span className="font-serif text-5xl leading-none text-primary/10">0{index + 1}</span>
-                  </div>
-                  <h3 className="mt-7 text-2xl font-bold text-dark">{pillar.title}</h3>
-                  <p className="mt-4 leading-7 text-gray-600">{pillar.description}</p>
-                  <div className="mt-auto flex items-center gap-2 pt-7 text-sm font-bold uppercase tracking-[0.14em] text-primary">
-                    <span className="h-px w-8 bg-primary/60 transition-all group-hover:w-12" />
-                    College pillar
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
         </div>
       </section>
+
+      <SchoolPillarsSection pillars={pillars} label="Why choose Straitgate College" />
 
       <section className="overflow-hidden bg-light text-dark">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
