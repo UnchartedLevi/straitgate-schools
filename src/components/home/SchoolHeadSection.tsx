@@ -12,7 +12,7 @@ export default function SchoolHeadSection() {
             <article className="max-w-3xl">
               <header className="max-w-3xl">
                 <span className="mb-5 inline-block font-serif text-4xl font-bold leading-tight text-primary sm:text-5xl">
-                  Message from the COO
+                  Futuristic Learning
                 </span>
                 <h2 className="text-xl italic leading-8 text-dark sm:text-2xl">
                   Preparing learners not only for the world as it is, but for the world they will help

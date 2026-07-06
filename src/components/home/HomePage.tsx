@@ -8,7 +8,7 @@ import NewsSection from './NewsSection';
 import TestimonialsSection from './TestimonialsSection';
 import MapSection from './MapSection';
 import SchoolHeadSection from './SchoolHeadSection';
-import SponsorsBar from './SponsorsBar';
+// import SponsorsBar from './SponsorsBar';
 
 const activities = [
   {
@@ -125,7 +125,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
         <SchoolHeadSection />
         <MissionVisionSection general={data.general} />
         <AlumniSection schools={data.schools} />
-        <SponsorsBar />
+        {/* <SponsorsBar /> */}
         <MapSection />
         <NewsSection featuredPost={data.featuredPost} posts={data.posts} schools={data.schools} />
         <TestimonialsSection testimonials={data.testimonials} />

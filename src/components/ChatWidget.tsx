@@ -6,6 +6,7 @@ import {
   PaperAirplaneIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
+import type { AdmissionLink, General, School } from '@/lib/content';
 
 type ChatMessage = {
   id: number;
@@ -13,20 +14,98 @@ type ChatMessage = {
   text: string;
 };
 
+interface ChatWidgetProps {
+  general: General;
+  schools: School[];
+}
+
 const initialMessages: ChatMessage[] = [
   {
     id: 1,
     from: 'bot',
-    text: 'Hi there! 👋 Welcome to Straitgate Schools. How can we help you today?',
+    text: 'Hi there! Welcome to Straitgate Schools. How can we help you today?',
   },
   {
     id: 2,
     from: 'bot',
-    text: 'Ask about admissions, our schools, or visiting the campus.',
+    text: 'Ask about admissions, school fees, school locations, or visiting the campus.',
   },
 ];
 
-export default function ChatWidget() {
+const keywordGroups = {
+  fees: ['fee', 'fees', 'tuition', 'price', 'cost', 'payment', 'pay'],
+  location: ['location', 'address', 'where', 'map', 'direction', 'directions', 'located'],
+  admission: ['admission', 'apply', 'application', 'form', 'register', 'enrol', 'enroll'],
+  contact: ['contact', 'phone', 'number', 'call', 'whatsapp', 'email', 'mail'],
+  schools: ['schools', 'campus', 'campuses', 'branches', 'section'],
+  visit: ['visit', 'tour', 'appointment', 'open day', 'see the school'],
+};
+
+function normalize(text: string) {
+  return text.toLowerCase().replace(/[^a-z0-9\s&-]/g, ' ');
+}
+
+function hasKeyword(text: string, keywords: string[]) {
+  return keywords.some((keyword) => text.includes(keyword));
+}
+
+function schoolMatches(input: string, schools: School[]) {
+  return schools.filter((school) => {
+    const schoolText = normalize(`${school.name} ${school.initial} ${school.address}`);
+    const schoolKeywords = ['magodo', 'magboro', 'forthright', 'college', 'high'].filter((keyword) =>
+      schoolText.includes(keyword),
+    );
+
+    return schoolKeywords.some((keyword) => input.includes(keyword));
+  });
+}
+
+function formatSchoolLocations(schools: School[]) {
+  return schools.map((school) => `${school.name}: ${school.address}`).join('\n');
+}
+
+function formatAdmissionLinks(links: AdmissionLink[]) {
+  return links.map((link) => `${link.name}: ${link.url}`).join('\n');
+}
+
+function getBotReply(message: string, general: General, schools: School[]) {
+  const input = normalize(message);
+  const matchedSchools = schoolMatches(input, schools);
+  const targetSchools = matchedSchools.length ? matchedSchools : schools;
+  const admissionLinks = general.admission_links ?? [];
+  const phone = general.phone || general.whatsapp_phone || 'the admission office';
+
+  if (hasKeyword(input, keywordGroups.fees)) {
+    return `For current school fees, please contact the admission office so they can give you the correct fee details for the class and campus. You can call or WhatsApp ${phone}, or email ${general.email}.`;
+  }
+
+  if (hasKeyword(input, keywordGroups.location)) {
+    return `${formatSchoolLocations(targetSchools)}\n\nYou can also check the map section on this website for directions.`;
+  }
+
+  if (hasKeyword(input, keywordGroups.admission)) {
+    const links = formatAdmissionLinks(admissionLinks);
+    return links
+      ? `You can start an application through these admission links:\n${links}\n\nFor help choosing the right campus, contact the admission office on ${phone}.`
+      : `For admissions, please contact the admission office on ${phone} or email ${general.email}.`;
+  }
+
+  if (hasKeyword(input, keywordGroups.contact)) {
+    return `You can reach Straitgate Schools by phone or WhatsApp on ${phone}, or email ${general.email}.`;
+  }
+
+  if (hasKeyword(input, keywordGroups.schools)) {
+    return `Our schools are:\n${schools.map((school) => school.name).join('\n')}\n\nAsk for a school's location if you want the address.`;
+  }
+
+  if (hasKeyword(input, keywordGroups.visit)) {
+    return `You can arrange a visit by contacting the admission office on ${phone}. They can guide you on the best time to visit the campus.`;
+  }
+
+  return `I can help with admissions, school fees, school locations, contact details, and campus visits. For anything else, please contact the admission office on ${phone} or email ${general.email}.`;
+}
+
+export default function ChatWidget({ general, schools }: ChatWidgetProps) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [draft, setDraft] = useState('');
@@ -50,7 +129,7 @@ export default function ChatWidget() {
         {
           id: nextId + 1,
           from: 'bot',
-          text: 'Thanks! Our team will get back to you shortly.',
+          text: getBotReply(text, general, schools),
         },
       ];
     });
@@ -66,7 +145,6 @@ export default function ChatWidget() {
     <div className="fixed bottom-5 right-4 z-[100] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {open && (
         <div className="flex h-[28rem] max-h-[70vh] w-[min(22rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-2xl shadow-black/25 ring-1 ring-black/10">
-          {/* Header */}
           <div className="flex items-center justify-between gap-3 bg-primary px-5 py-4 text-white">
             <div className="flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
@@ -74,7 +152,7 @@ export default function ChatWidget() {
               </span>
               <div>
                 <p className="text-sm font-bold leading-tight">Straitgate Assistant</p>
-                <p className="text-xs font-medium text-white/70">Typically replies in a few hours</p>
+                <p className="text-xs font-medium text-white/70">Instant guided replies</p>
               </div>
             </div>
             <button
@@ -87,7 +165,6 @@ export default function ChatWidget() {
             </button>
           </div>
 
-          {/* Messages */}
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto bg-light px-4 py-4">
             {messages.map((message) => (
               <div
@@ -95,7 +172,7 @@ export default function ChatWidget() {
                 className={message.from === 'user' ? 'flex justify-end' : 'flex justify-start'}
               >
                 <p
-                  className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-6 shadow-sm ${
+                  className={`max-w-[80%] whitespace-pre-line rounded-2xl px-4 py-2.5 text-sm leading-6 shadow-sm ${
                     message.from === 'user'
                       ? 'rounded-br-md bg-primary text-white'
                       : 'rounded-bl-md bg-white text-dark ring-1 ring-black/5'
@@ -107,7 +184,6 @@ export default function ChatWidget() {
             ))}
           </div>
 
-          {/* Input */}
           <form
             onSubmit={handleSubmit}
             className="flex items-center gap-2 border-t border-black/10 bg-white px-3 py-3"
@@ -116,7 +192,7 @@ export default function ChatWidget() {
               type="text"
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
-              placeholder="Type a message…"
+              placeholder="Type a message..."
               aria-label="Type a message"
               className="min-w-0 flex-1 rounded-full bg-light px-4 py-2.5 text-sm text-dark outline-none ring-1 ring-black/10 transition-shadow placeholder:text-gray-400 focus:ring-2 focus:ring-primary"
             />
@@ -132,13 +208,12 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {/* Floating toggle button */}
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-label={open ? 'Close chat' : 'Open chat'}
         aria-expanded={open}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-xl shadow-primary/30 transition-all hover:bg-primary-dark hover:scale-105"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-xl shadow-primary/30 transition-all hover:scale-105 hover:bg-primary-dark"
       >
         {open ? <XMarkIcon className="h-7 w-7" /> : <ChatBubbleLeftRightIcon className="h-7 w-7" />}
       </button>
