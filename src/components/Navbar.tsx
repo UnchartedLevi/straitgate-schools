@@ -32,6 +32,27 @@ interface NavbarProps {
   admissionLinks: AdmissionLink[];
 }
 
+function BrandText({ label, highlightIDot = false }: { label: string; highlightIDot?: boolean }) {
+  if (!highlightIDot) return <>{label}</>;
+
+  const iIndex = label.indexOf('i');
+  if (iIndex === -1) return <>{label}</>;
+
+  return (
+    <>
+      {label.slice(0, iIndex)}
+      <span className="relative inline-block leading-none">
+        i
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-[0.08em] h-[0.18em] w-[0.18em] -translate-x-1/2 rounded-full bg-primary"
+        />
+      </span>
+      {label.slice(iIndex + 1)}
+    </>
+  );
+}
+
 export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(Boolean);
@@ -46,7 +67,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const activeAdmissionLink = activeAdmissionTerm
     ? admissionLinks.find((link) => link.name.toLowerCase().includes(activeAdmissionTerm))
     : undefined;
-  const brandLabel = activeSchool ? activeSchool.name.toUpperCase() : 'STRAITGATE SCHOOLS';
+  const brandLabel = activeSchool ? activeSchool.name : 'Straitgate Schools';
   const isStraitgateCollege = activeSchoolSlug === 'sc';
   const logoConfig =
     activeSchoolSlug === 'sc'
@@ -152,7 +173,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
     <>
       {section === 'About Us' && (
         <>
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">About Us</p>
+          <p className="text-xs font-extrabold tracking-[0.14em] text-primary">About Us</p>
           <Link href="/about/history" onClick={closeMenu} className={`${compact ? 'mt-3 text-lg' : 'mt-6 text-2xl'} block font-semibold transition-colors hover:text-primary`}>
             Our History
           </Link>
@@ -161,7 +182,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
 
       {section === 'Schools' && (
         <>
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Our Schools</p>
+          <p className="text-xs font-extrabold tracking-[0.14em] text-primary">Our Schools</p>
           <ul className={`${compact ? 'mt-2' : 'mt-4'} divide-y divide-white/10`}>
             {schools.map((school) => (
               <li key={school.id}>
@@ -176,7 +197,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
 
       {section === 'Admissions' && (
         <>
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Apply To A School</p>
+          <p className="text-xs font-extrabold tracking-[0.14em] text-primary">Apply To A School</p>
           <ul className={`${compact ? 'mt-2' : 'mt-4'} divide-y divide-white/10`}>
             {admissionLinks.map((link) => (
               <li key={link.name}>
@@ -227,7 +248,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
               className="hidden text-lg tracking-[0.1em] sm:block lg:text-3xl"
               style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
             >
-              {brandLabel}
+              <BrandText label={brandLabel} highlightIDot={!activeSchoolSlug} />
             </span>
           </Link>
 
@@ -237,7 +258,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
                 href={activeAdmissionLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
+                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold tracking-[0.08em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
               >
                 Apply
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -246,7 +267,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => openMenu('Admissions')}
-                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
+                className="group flex items-center gap-2 bg-primary px-4 text-xs font-extrabold tracking-[0.08em] text-white transition-colors hover:bg-primary-dark sm:gap-4 sm:px-7 sm:text-sm"
               >
                 Apply
                 <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -257,7 +278,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
               onClick={() => openMenu()}
               aria-expanded={menuOpen}
               aria-controls="main-menu"
-              className="flex items-center gap-2 bg-[#172554] px-4 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#1e3a6d] sm:gap-4 sm:px-7 sm:text-sm"
+              className="flex items-center gap-2 bg-[#172554] px-4 text-xs font-extrabold tracking-[0.08em] text-white transition-colors hover:bg-[#1e3a6d] sm:gap-4 sm:px-7 sm:text-sm"
             >
               <Bars3Icon className="h-6 w-6" />
               Menu
@@ -299,7 +320,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
                     className="hidden text-lg tracking-[0.1em] sm:block lg:text-3xl"
                     style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
                   >
-                    {brandLabel}
+                    <BrandText label={brandLabel} highlightIDot={!activeSchoolSlug} />
                   </span>
                 </Link>
                 <button
@@ -372,7 +393,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
                       exit={{ opacity: 0 }}
                       className="max-w-lg"
                     >
-                      <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Explore Straitgate</p>
+                      <p className="text-xs font-extrabold tracking-[0.14em] text-primary">Explore Straitgate</p>
                       <p className="mt-5 text-xl leading-8 text-white/65">
                         Discover our schools, learn about our story, or start an application.
                       </p>
