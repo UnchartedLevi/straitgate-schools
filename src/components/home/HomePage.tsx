@@ -8,7 +8,7 @@ import NewsSection from './NewsSection';
 import TestimonialsSection from './TestimonialsSection';
 import MapSection from './MapSection';
 import SchoolHeadSection from './SchoolHeadSection';
-import SponsorsBar from './SponsorsBar';
+// import SponsorsBar from './SponsorsBar';
 
 const activities = [
   {
@@ -60,9 +60,15 @@ const activities = [
     text: 'The football programme builds fitness, discipline, sportsmanship, and tactical awareness through regular coaching, friendly matches, and competitive school fixtures.',
   },
   {
+    title: 'Basketball Club',
+    image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80',
+    bg: 'bg-white',
+    text: 'Our Basketball Club develops fitness, coordination, teamwork, and strategic thinking. Through focused coaching, drills, and competitive games, students learn to communicate clearly, make quick decisions, and grow in confidence on and off the court.',
+  },
+  {
     title: 'Creative Arts Club',
     image: '/sgpics/home-creative-arts-club.jpg',
-    bg: 'bg-white',
+    bg: 'bg-[#f5f0eb]',
     text: 'Learners explore drawing, painting, crafts, and design projects that sharpen observation, patience, originality, and the confidence to present finished work.',
   },
 ];
@@ -119,7 +125,7 @@ export default function HomePage({ data }: { data: HomePageData }) {
         <SchoolHeadSection />
         <MissionVisionSection general={data.general} />
         <AlumniSection schools={data.schools} />
-        <SponsorsBar />
+        {/* <SponsorsBar /> */}
         <MapSection />
         <NewsSection featuredPost={data.featuredPost} posts={data.posts} schools={data.schools} />
         <TestimonialsSection testimonials={data.testimonials} />

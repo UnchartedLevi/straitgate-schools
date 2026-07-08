@@ -18,10 +18,12 @@ import {
   LinkIcon,
   MapPinIcon,
   PlayIcon,
-  SparklesIcon,
   TrophyIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
+import SchoolPillarsSection from '@/components/schools/SchoolPillarsSection';
+import FacilitiesStackSection from '@/components/schools/FacilitiesStackSection';
+import SchoolGallery from '@/components/schools/SchoolGallery';
 import type { AdmissionLink, School } from '@/lib/content';
 
 type StraitgatePrimaryMagodoPageProps = {
@@ -63,7 +65,7 @@ const pillars = [
     title: 'Christian Values',
     description:
       'Faith, integrity, and compassion woven into daily school life and character formation.',
-    icon: SparklesIcon,
+    iconImage: '/sgpics/cross-icon.png',
   },
   {
     title: 'Sports',
@@ -202,7 +204,6 @@ const facilities = [
 ];
 
 export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimaryMagodoPageProps) {
-  const galleryTrackRef = useRef<HTMLDivElement>(null);
   const videoTrackRef = useRef<HTMLDivElement>(null);
   // Magodo apply CTAs always point to the Straitgate Primary School Magodo educare admission form.
   const applyHref = 'https://straitgatemagodo.educare.school/admission-form';
@@ -220,33 +221,6 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
     track.scrollLeft = firstCard.offsetWidth + gap;
   }, []);
 
-  useEffect(() => {
-    const track = galleryTrackRef.current;
-    if (!track) return;
-
-    let frame = 0;
-    const scroll = () => {
-      const loopPoint = track.scrollWidth / 2;
-      if (track.scrollLeft >= loopPoint) {
-        track.scrollLeft = 0;
-      } else {
-        track.scrollLeft += 0.55;
-      }
-      frame = window.requestAnimationFrame(scroll);
-    };
-
-    frame = window.requestAnimationFrame(scroll);
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
-  const scrollGallery = (direction: number) => {
-    const track = galleryTrackRef.current;
-    const firstCard = track?.querySelector<HTMLElement>('[data-gallery-card="true"]');
-    if (!track || !firstCard) return;
-
-    const gap = 20;
-    track.scrollBy({ left: direction * (firstCard.offsetWidth + gap), behavior: 'smooth' });
-  };
   const scrollVideo = (direction: number) => {
     const track = videoTrackRef.current;
     const firstCard = track?.querySelector<HTMLElement>('[data-video-card="true"]');
@@ -274,9 +248,6 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="max-w-4xl"
           >
-            <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.22em] text-white backdrop-blur">
-              Straitgate Schools / Magodo
-            </p>
             <h1 className="font-serif text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-8xl">
               Straitgate Primary School <span className="text-primary">Magodo</span>
             </h1>
@@ -295,7 +266,7 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
               </a>
               <Link
                 href="/contact"
-                className="inline-flex min-h-12 items-center justify-center border border-white/30 bg-white/10 px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur transition-colors hover:bg-white hover:text-dark"
+                className="inline-flex min-h-12 items-center justify-center border border-white bg-white px-6 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-dark transition-colors hover:border-primary hover:bg-primary hover:text-white"
               >
                 Contact us
               </Link>
@@ -308,14 +279,14 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
             transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
             className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-2"
           >
-            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="border border-white/15 bg-white/10 p-5 backdrop-blur transition-colors hover:bg-white/15">
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="border border-white/20 bg-dark p-5 transition-colors hover:border-primary hover:bg-primary">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/50">Location</p>
               <p className="mt-2 flex items-start gap-2 text-sm font-semibold leading-6 text-white/85">
                 <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                 {address}
               </p>
             </a>
-            <div className="border border-white/15 bg-white/10 p-5 backdrop-blur">
+            <div className="border border-white/20 bg-dark p-5">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/50">Focus</p>
               <p className="mt-2 text-lg font-bold leading-7">Faith, academics, leadership</p>
             </div>
@@ -371,57 +342,10 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className={sectionEyebrowClass}>Gallery</p>
-              <h2 className={sectionTitleClass}>A clear look at the classrooms, campus, and pupil community.</h2>
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                aria-label="Previous gallery image"
-                onClick={() => scrollGallery(-1)}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white text-primary shadow-lg shadow-black/5 transition-colors hover:bg-primary hover:text-white"
-              >
-                <ArrowLeftIcon className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next gallery image"
-                onClick={() => scrollGallery(1)}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
-              >
-                <ArrowRightIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </motion.div>
-
-          <div
-            ref={galleryTrackRef}
-            className="no-scrollbar mt-10 overflow-x-auto scroll-smooth"
-          >
-            <div className="flex min-h-[34rem] gap-5">
-              {[...galleryImages, ...galleryImages].map((item, index) => (
-                <div
-                  key={`${item.label}-${item.src}-${index}`}
-                  data-gallery-card="true"
-                  className="relative min-h-[34rem] shrink-0 basis-full overflow-hidden rounded-[1.75rem] bg-light shadow-2xl shadow-black/10 md:basis-[calc((100%_-_2.5rem)/3)]"
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(min-width: 1024px) 26vw, (min-width: 768px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <SchoolGallery
+        images={galleryImages}
+        subtitle="A clear look at the classrooms, campus, and pupil community."
+      />
 
       <section className="relative overflow-hidden bg-primary/5 py-20 sm:py-28">
         <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
@@ -449,35 +373,13 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
             </div>
           </motion.div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {pillars.map((pillar, index) => {
-              const Icon = pillar.icon;
-              return (
-                <motion.article
-                  key={pillar.title}
-                  {...fadeUp}
-                  transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                  className="group relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-white p-7 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.65)] transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_26px_55px_-30px_rgba(172,12,48,0.55)]"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/25">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <span className="font-serif text-5xl leading-none text-primary/10">0{index + 1}</span>
-                  </div>
-                  <h3 className="mt-7 text-2xl font-bold text-dark">{pillar.title}</h3>
-                  <p className="mt-4 leading-7 text-gray-600">{pillar.description}</p>
-                  <div className="mt-7 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-primary">
-                    <span className="h-px w-8 bg-primary/60 transition-all group-hover:w-12" />
-                    Key achievement
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
         </div>
       </section>
+
+      <SchoolPillarsSection
+        pillars={pillars}
+        label="Why choose Straitgate Primary School Magodo"
+      />
 
       <section className="overflow-hidden bg-light text-dark">
         <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
@@ -590,31 +492,10 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
         </div>
       </section>
 
-      <section className="bg-[#f3f0ea] py-20 text-dark sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="font-serif text-4xl font-bold leading-tight text-primary sm:text-5xl">Facilities</p>
-            <h2 className="mt-4 text-xl font-semibold leading-8 text-dark/70 sm:text-2xl">
-              Purpose-built spaces for science, creativity, technology, and reading culture.
-            </h2>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {facilities.map((facility) => (
-              <article
-                key={facility.title}
-                className="rounded-lg border border-black/10 bg-white p-5 shadow-sm"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <SparklesIcon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 text-base font-black text-dark">{facility.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-gray-600">{facility.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FacilitiesStackSection
+        facilities={facilities}
+        subtitle="Purpose-built spaces for science, creativity, technology, and reading culture."
+      />
 
       <section className="relative overflow-hidden bg-primary py-20 text-white sm:py-24">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[#172554] lg:block" aria-hidden="true" />
