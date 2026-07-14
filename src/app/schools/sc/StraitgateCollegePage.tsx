@@ -70,7 +70,7 @@ const headMessage =
 
 const collegeImages = [
   {
-    src: '/sgpics/college-hero.jpg',
+    src: '/sgpics/college-campus-drive.jpg',
     alt: 'Straitgate College classroom learning',
     label: 'Focused learning',
   },
@@ -110,7 +110,7 @@ const collegeImages = [
     label: 'Leadership moments',
   },
   {
-    src: '/sgpics/high-school-hero.jpg',
+    src: '/sgpics/college-campus-drive.jpg',
     alt: 'Straitgate College school grounds',
     label: 'School grounds',
   },
@@ -126,7 +126,7 @@ const videoStories = [
     title: 'College classroom moments',
     platform: 'YouTube',
     href: 'https://www.youtube.com/results?search_query=Straitgate+College',
-    image: '/sgpics/college-hero.jpg',
+    image: '/sgpics/college-campus-drive.jpg',
   },
 ];
 
@@ -169,7 +169,7 @@ const facilities = [
   {
     title: 'Boarding House',
     description: 'Supervised boarding and study routines.',
-    image: '/sgpics/college-hero.jpg',
+    image: '/sgpics/college-campus-drive.jpg',
   },
   {
     title: 'Cafeteria',
@@ -179,7 +179,7 @@ const facilities = [
   {
     title: 'Auditorium',
     description: 'Assemblies, debates, and performances.',
-    image: '/sgpics/high-school-hero.jpg',
+    image: '/sgpics/college-academic-journey.jpg',
   },
 ];
 
@@ -215,7 +215,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
       <section className="relative min-h-screen overflow-hidden bg-[#080808] text-white">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-70"
-          style={{ backgroundImage: "url('/sgpics/college-hero.jpg')" }}
+          style={{ backgroundImage: "url('/sgpics/college-campus-drive.jpg')" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-[#080808]" />
@@ -345,7 +345,7 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
             </div>
             <div className="relative min-h-[34rem] overflow-hidden rounded-[1.75rem] bg-light shadow-2xl shadow-black/10">
               <Image
-                src="/sgpics/college-hero.jpg"
+                src="/sgpics/college-campus-drive.jpg"
                 alt="Straitgate College student learning in class"
                 fill
                 sizes="(min-width: 1024px) 44vw, 100vw"

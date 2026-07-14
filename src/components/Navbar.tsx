@@ -12,6 +12,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { AdmissionLink, School } from '@/lib/content';
+import StraitgateWordmark from './StraitgateWordmark';
 
 type MenuSection = 'About Us' | 'Schools' | 'Admissions';
 
@@ -32,32 +33,10 @@ interface NavbarProps {
   admissionLinks: AdmissionLink[];
 }
 
-function BrandText({ label, highlightIDot = false }: { label: string; highlightIDot?: boolean }) {
-  if (!highlightIDot) return <>{label}</>;
-
-  const iIndex = label.indexOf('i');
-  if (iIndex === -1) return <>{label}</>;
-
-  return (
-    <>
-      {label.slice(0, iIndex)}
-      <span className="relative inline-block leading-none">
-        i
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-[0.08em] h-[0.18em] w-[0.18em] -translate-x-1/2 rounded-full bg-primary"
-        />
-      </span>
-      {label.slice(iIndex + 1)}
-    </>
-  );
-}
-
 export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(Boolean);
   const activeSchoolSlug = pathSegments[0] === 'schools' ? pathSegments[1] : undefined;
-  const activeSchool = schools.find((school) => school.initial === activeSchoolSlug);
   const activeAdmissionTerm =
     activeSchoolSlug === 'sc' ? 'college'
     : activeSchoolSlug === 'shs' ? 'high'
@@ -67,6 +46,7 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
   const activeAdmissionLink = activeAdmissionTerm
     ? admissionLinks.find((link) => link.name.toLowerCase().includes(activeAdmissionTerm))
     : undefined;
+  const activeSchool = schools.find((school) => school.initial === activeSchoolSlug);
   const brandLabel = activeSchool ? activeSchool.name : 'Straitgate Schools';
   const isStraitgateCollege = activeSchoolSlug === 'sc';
   const logoConfig =
@@ -244,12 +224,10 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
               priority
               unoptimized
             />
-            <span
+            <StraitgateWordmark
+              label={brandLabel}
               className="hidden text-lg tracking-[0.1em] sm:block lg:text-3xl"
-              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
-            >
-              <BrandText label={brandLabel} highlightIDot={!activeSchoolSlug} />
-            </span>
+            />
           </Link>
 
           <div className="flex items-stretch">
@@ -316,12 +294,10 @@ export default function Navbar({ schools, admissionLinks }: NavbarProps) {
                     className={logoClassName}
                     unoptimized
                   />
-                  <span
+                  <StraitgateWordmark
+                    label={brandLabel}
                     className="hidden text-lg tracking-[0.1em] sm:block lg:text-3xl"
-                    style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
-                  >
-                    <BrandText label={brandLabel} highlightIDot={!activeSchoolSlug} />
-                  </span>
+                  />
                 </Link>
                 <button
                   type="button"

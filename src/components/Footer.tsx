@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { General, School } from '@/lib/content';
 import CopyPhoneButton from './CopyPhoneButton';
+import StraitgateWordmark from './StraitgateWordmark';
 
 interface FooterProps {
   general: General;
@@ -64,12 +65,10 @@ export default function Footer({ general, schools }: FooterProps) {
         <div className="flex flex-col items-center py-12 text-center">
           <Link href="/" className="flex flex-col items-center gap-4" aria-label="Straitgate Schools home">
             <Image src="/logos.png" alt="Straitgate Schools logos" width={913} height={273} className="h-35 w-auto object-contain" unoptimized />
-            <span
+            <StraitgateWordmark
+              label="Straitgate Schools"
               className="text-xl font-extrabold tracking-[0.16em]"
-              style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}
-            >
-              STRAITGATE SCHOOLS
-            </span>
+            />
           </Link>
           <p className="mt-5 max-w-xl text-sm leading-6 text-white/50">{general.footer_message}</p>
         </div>

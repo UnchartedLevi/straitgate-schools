@@ -117,7 +117,7 @@ const videoStories = [
     title: 'High school classroom moments',
     platform: 'YouTube',
     href: 'https://www.youtube.com/results?search_query=Straitgate+High+School',
-    image: '/sgpics/high-school-hero.jpg',
+    image: '/sgpics/high-school-campus-drive.jpg',
   },
 ];
 
@@ -176,7 +176,7 @@ export default function StraitgateHighSchoolPage({ school }: StraitgateHighSchoo
       <section className="relative min-h-screen overflow-hidden bg-[#080808] text-white">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-70"
-          style={{ backgroundImage: "url('/sgpics/high-school-hero.jpg')" }}
+          style={{ backgroundImage: "url('/sgpics/high-school-campus-drive.jpg')" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-[#080808]" />
@@ -338,7 +338,7 @@ export default function StraitgateHighSchoolPage({ school }: StraitgateHighSchoo
 
           <div className="relative min-h-[520px] overflow-hidden bg-white lg:min-h-full">
             <Image
-              src="/sgpics/high-school-hero.jpg"
+              src="/sgpics/high-school-campus-drive.jpg"
               alt="Straitgate High School classroom learning"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
