@@ -92,9 +92,8 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
                   <button
                     key={i}
                     onClick={() => { setDirection(i > activeIndex ? 1 : -1); setCurrent(i); }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === activeIndex ? 'bg-primary w-6' : 'bg-gray-300'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${i === activeIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                      }`}
                   />
                 ))}
               </div>
