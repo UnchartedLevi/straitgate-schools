@@ -311,10 +311,8 @@ export default function StraitgateCollegePage({ school }: StraitgateCollegePageP
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/80 via-dark/25 to-transparent p-5 pt-20">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white">
-                      School Leadership
-                    </p>
-                    <p className="mt-1 font-serif text-xl text-white">Welcome to college</p>
+                    
+                    <p className="mt-1 font-serif text-xl text-white">Mr Joseph Oyegbile</p>
                   </div>
                 </div>
               </div>

@@ -308,9 +308,9 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
                 <div className="mt-6 h-1 w-16 bg-primary" />
                 <p className="mt-6 text-base leading-8 text-gray-700">{headMessage}</p>
                 <div className="mt-7 border-l-4 border-primary pl-5">
-                  <p className="font-semibold text-dark">Mrs. Ugochi Madubuike</p>
+                  <p className="font-semibold text-dark">Head of School</p>
                   <p className="mt-1 text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Head of School · Straitgate Primary School Magodo
+                    Straitgate Primary School Magodo
                   </p>
                 </div>
               </div>
@@ -330,10 +330,8 @@ export default function StraitgatePrimaryMagodoPage({ school }: StraitgatePrimar
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/80 via-dark/25 to-transparent p-5 pt-20">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white">
-                      School Leadership
-                    </p>
-                    <p className="mt-1 font-serif text-xl text-white">Welcome to primary school</p>
+                    
+                    <p className="mt-1 font-serif text-xl text-white">Mrs. Ugochi Madubuike</p>
                   </div>
                 </div>
               </div>
