@@ -49,14 +49,14 @@ export default function SchoolHeadSection() {
               <div className="absolute -left-5 -top-5 h-full w-full border border-primary/25" />
               <div className="relative overflow-hidden bg-light shadow-2xl">
                 <Image
-                  src="/makeUp.jpeg"
-                  alt="Mrs. Nnena Okore"
+                  src="/makeUp.png"
+                  alt="Mrs. Nnenna Okore"
                   width={800}
                   height={1000}
                   className="aspect-[4/5] h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/80 via-dark/25 to-transparent p-6 pt-24">
-                  <p className="mt-2 font-serif text-2xl text-white">Mrs. Nnena Okore</p>
+                  <p className="mt-2 font-serif text-2xl text-white">Mrs. Nnenna Okore</p>
                 </div>
               </div>
             </div>
