@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import FadeIn from '@/components/FadeIn';
@@ -23,9 +24,11 @@ export default function NewsDetailPage({ post, schools, relatedPosts }: NewsDeta
       {post.featured_image && (
         <section className="relative pt-32">
           <div className="aspect-[21/9] max-h-[450px] overflow-hidden">
-            <img
+            <Image
               src={post.featured_image}
               alt={post.title}
+              width={1800}
+              height={800}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
@@ -83,9 +86,11 @@ export default function NewsDetailPage({ post, schools, relatedPosts }: NewsDeta
                     <Link href={`/news/${rp.slug}`} className="group block">
                       {rp.featured_image && (
                         <div className="aspect-[16/10] rounded-xl overflow-hidden mb-3">
-                          <img
+                          <Image
                             src={rp.featured_image}
                             alt={rp.title}
+                            width={800}
+                            height={500}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
                           />

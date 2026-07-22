@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import PageHeader from '@/components/PageHeader';
 import FadeIn from '@/components/FadeIn';
@@ -39,9 +40,11 @@ export default function HistoryPage({ histories }: { histories: HistoryItem[] })
                       <div className="flex-1 bg-light rounded-2xl overflow-hidden">
                         {item.image && (
                           <div className="aspect-[16/7] overflow-hidden">
-                            <img
+                            <Image
                               src={item.image}
                               alt={`History ${item.year}`}
+                              width={1200}
+                              height={600}
                               className="w-full h-full object-cover"
                               loading="lazy"
                             />

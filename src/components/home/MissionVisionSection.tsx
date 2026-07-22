@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { General } from '@/lib/content';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
@@ -28,12 +29,14 @@ export default function MissionVisionSection({ general, section }: MissionVision
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
               >
-                <img
+                <Image
                   src="/sgpics/home-our-purpose.jpg"
                   alt="Our mission"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   loading="lazy"
                 />
               </motion.div>
@@ -100,12 +103,14 @@ export default function MissionVisionSection({ general, section }: MissionVision
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
               >
-                <img
+                <Image
                   src="/sgpics/home-vision.jpg"
                   alt="Our vision"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   loading="lazy"
                 />
               </motion.div>

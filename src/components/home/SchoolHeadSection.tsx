@@ -1,7 +1,7 @@
 'use client';
 
+import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
-import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function SchoolHeadSection() {
   return (
@@ -48,9 +48,11 @@ export default function SchoolHeadSection() {
             <div className="relative mx-auto w-full max-w-lg lg:ml-auto">
               <div className="absolute -left-5 -top-5 h-full w-full border border-primary/25" />
               <div className="relative overflow-hidden bg-light shadow-2xl">
-                <img
+                <Image
                   src="/makeUp.jpeg"
                   alt="Mrs. Nnena Okore"
+                  width={800}
+                  height={1000}
                   className="aspect-[4/5] h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/80 via-dark/25 to-transparent p-6 pt-24">

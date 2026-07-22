@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
 import { General } from '@/lib/content';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
@@ -18,10 +19,12 @@ export default function WelcomeSection({ general }: WelcomeSectionProps) {
           <FadeIn direction="left">
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src="/sgpics/magodo-hero.jpg"
                   alt="Straitgate students"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   loading="lazy"
                 />
               </div>

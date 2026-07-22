@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import FadeIn from '@/components/FadeIn';
@@ -42,9 +43,11 @@ export default function NewsSection({ featuredPost, posts, schools }: NewsSectio
                 >
                   {featuredPost.featured_image && (
                     <div className="aspect-[16/9] overflow-hidden">
-                      <img
+                      <Image
                         src={featuredPost.featured_image}
                         alt={featuredPost.title}
+                        width={1200}
+                        height={675}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />

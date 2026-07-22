@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { General, School, Curriculum, Testimonial, NewsPost } from '@/lib/content';
 import HeroSection from './HeroSection';
 import MissionVisionSection from './MissionVisionSection';
@@ -101,12 +102,16 @@ export default function HomePage({ data }: { data: HomePageData }) {
           >
             <div className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
               <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-16">
-                <img
-                  src={activity.image}
-                  alt={activity.title}
-                  className="h-[320px] w-full rounded-2xl object-cover shadow-xl sm:h-[420px] lg:h-[500px]"
-                  loading="lazy"
-                />
+                <div className="relative h-[320px] w-full overflow-hidden rounded-2xl shadow-xl sm:h-[420px] lg:h-[500px]">
+                  <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                </div>
                 <div>
                   <h3 className="mb-5 font-serif text-4xl font-bold leading-tight text-primary md:text-5xl">
                     {activity.title}
